@@ -1,0 +1,28 @@
+{
+  "name": "bitbucket-backup",
+  "version": "1.0.0",
+  "description": "Will fetch and clone repositories from a Bitbucket account to another git remote of choice",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmarreco/bitbucket-backup.git"
+  },
+  "keywords": [
+    "bitbucket",
+    "backup",
+    "repository",
+    "git"
+  ],
+  "author": "Daniel Marreco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmarreco/bitbucket-backup/issues"
+  },
+  "homepage": "https://github.com/dmarreco/bitbucket-backup#readme",
+  "dependencies": {
+    "bitbucket": "^1.17.1"
+  }
+}

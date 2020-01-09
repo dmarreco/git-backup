@@ -25,7 +25,6 @@
   "dependencies": {
     "bitbucket": "^1.17.1",
     "dotenv": "^8.2.0",
-    "download-git-repo": "^3.0.2",
     "simple-git": "^1.129.0"
   }
 }

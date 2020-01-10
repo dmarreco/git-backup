@@ -10,8 +10,32 @@
             "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
-            ],
+            ],           
             "program": "${workspaceFolder}\\src\\index.js"
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Debug",
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            "console": "internalConsole",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}\\node_modules\\mocha\\bin\\_mocha",
+            "args": [
+                "${file}", 
+                "--colors", 
+                "--no-timeouts",
+                "--require", "esm"
+            ],
+            "outFiles": ["${workspaceRoot}/**/*.js"],
+            "runtimeExecutable": null,
+            "env": {
+                "AWS_REGION": "us-west-2",                
+                "stage": "ci",
+                "DISABLE_XRAY": "true",
+                "LOG_LEVEL": "ERROR"
+            }
+        }   
     ]
 }

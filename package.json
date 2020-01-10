@@ -4,7 +4,7 @@
   "description": "Will fetch and clone repositories from a Bitbucket account to another git remote of choice",
   "main": "src/index.js",
   "scripts": {
-    "test": "test"
+    "test": "LOG_LEVEL=ERROR ./node_modules/.bin/_mocha test/**/*.js --colors --timeout 60000 --require esm"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,13 @@
   "dependencies": {
     "bitbucket": "^1.17.1",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "simple-git": "^1.129.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "mocha": "^7.0.0",
+    "sinon": "^8.0.4"
   }
 }

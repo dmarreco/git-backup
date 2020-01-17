@@ -1,15 +1,15 @@
 import * as log from './lib/log';
 import * as dotenv from 'dotenv';
-import * as Bitbucket from './service/bitbucket.service';
+import listRepositories from './tasks/list-repositories';
+import backupRepository from './tasks/backup-repository';
 
 dotenv.config();
 
 (async function () {
     try {
-        const repos = await Bitbucket.listRepositoriesData();
-
+        const repos = [(await listRepositories())[0]];
         await Promise.all(repos.map(async repo => {
-            return Bitbucket.clone(repo);
+            return backupRepository(repo);
         }));
     } catch (e) {
         log.error('Error executing script', {}, e)

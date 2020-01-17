@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const sinon = require('sinon');
 
 //import Bitbucket from 'bitbucket';
 const Bitbucket = require('bitbucket');
@@ -24,11 +23,7 @@ describe('Bitbucket service module', () => {
             sinon.stub(bb, 'authenticate').returns();
             sinon.stub(bb.repositories, 'list').returns(bitbucketResponseMock);
 
-            BitbucketService = require('../src/service/bitbucket.service');
-        });
-
-        afterEach(() => {
-            Bitbucket.prototype.constructor.restore();
+            BitbucketService = require('../src/service/bitbucket');
         });
 
         it('Should return a list of repository objects witn names and links', async () => {
@@ -38,6 +33,12 @@ describe('Bitbucket service module', () => {
             expect(result).to.deep.eq(bitbucketResponseMock.data.values);
         });
 
+    });
+
+    describe('clone repository with success', () => {
+        it('should return a promise', () => {
+
+        })
     });
 
 }); 

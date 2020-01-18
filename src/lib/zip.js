@@ -1,6 +1,8 @@
-import zipFolder from 'zip-folder';
-import fs from 'fs';
+import Zip from 'node-zip';
 import * as log from './log';
+import { lsRecursive } from './file-system';
+import fs from 'fs';
+
 
 /**
  * Recursively moves all files in a folder structure to a compressed zip file
@@ -10,19 +12,21 @@ import * as log from './log';
  */
 export default async function (folder) {
     log.info('Compressing folder', { folder } );
-    const target = folder + '.zip';
-    const res = await new Promise((resolve, reject) => {
-        zipFolder(folder, target, err => {
-            if(err) {
-                reject(err);
-            }
-            resolve(target);
-        });
-     });
 
-    log.info('Deleting folder', { folder })
-    return new Promise((resolve, reject) => fs.rmdir(folder, { recursive: true }, err => {
-        if (err) reject('Error deleting folder');
-        resolve(res);
-    }));
+    const files = await lsRecursive(folder);
+
+    const target = folder + '.zip';
+
+    const zip = new Zip();
+
+    files.map(file => {
+        const content = fs.readFileSync(file);
+        zip.file(file, content);
+    });
+
+    const data = zip.generate({base64:false,compression:'DEFLATE'});
+
+    fs.writeFileSync(target, data, 'binary');
+
+    return target;
 }

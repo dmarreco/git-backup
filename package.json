@@ -26,6 +26,7 @@
     "bitbucket": "^1.17.1",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
+    "node-zip": "^1.1.1",
     "simple-git": "^1.129.0",
     "zip-folder": "^1.0.0"
   },

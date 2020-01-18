@@ -4,9 +4,9 @@ import * as log from '../lib/log';
 
 const MAX_REPOS = 100;
 const TIMEOUT = 100000;
-const TMP_DIR = 'tmp';
+const DEFAULT_API_URL = 'https://api.bitbucket.org/2.0';
 
-export async function listRepositoriesData(apiUrl, login, password, username) {
+export async function listRepositoriesData(apiUrl = DEFAULT_API_URL, login, password, username) {
     const bitbucket = new Bitbucket({
         baseUrl: apiUrl,
         headers: {},
@@ -35,9 +35,9 @@ export async function listRepositoriesData(apiUrl, login, password, username) {
     return result.data.values;
 }
 
-export async function clone(name, url) {
+export async function clone(name, url, targetFolder) {
     log.info(`Cloning repository`, {name, url});
-    const outPath = `${TMP_DIR}/${name}`;
+    const outPath = `${targetFolder}/${name}`;
     await Git().clone(url, outPath);
     return outPath;
 }

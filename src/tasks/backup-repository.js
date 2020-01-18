@@ -3,7 +3,8 @@ import moveToZip from '../lib/zip';
 import { clone } from '../lib/bitbucket';
 
 export default async function (repo) {
-    const folder = await clone(repo.name, repo.url);
+    const folder = await clone(repo.name, repo.url, process.env.TMP_DIR);
     const sourceFileLocation = await moveToZip(folder);
-    return saveToS3(process.env.S3_TARGET_BUCKET_NAME, sourceFileLocation);
+    await saveToS3(process.env.S3_TARGET_BUCKET_NAME, sourceFileLocation);
 }
+

@@ -1,6 +1,6 @@
 import saveToS3 from '../lib/s3';
 import moveToZip from '../lib/zip';
-import { clone } from '../lib/providers/bitbucket';
+import { clone } from '../lib/providers';
 
 export default async function (repo) {
     const folder = await clone(repo.name, repo.url, process.env.TMP_DIR);

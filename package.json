@@ -1,14 +1,14 @@
 {
-  "name": "bitbucket-backup",
+  "name": "git-backup",
   "version": "1.0.0",
-  "description": "Will fetch and clone repositories from a Bitbucket account to another git remote of choice",
+  "description": "Will fetch and clone all repositories from many repository providers account to the storage of choice",
   "main": "src/index.js",
   "scripts": {
     "test": "LOG_LEVEL=ERROR ./node_modules/.bin/_mocha test/**/*.js --colors --timeout 60000 --require esm"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dmarreco/bitbucket-backup.git"
+    "url": "git+https://github.com/dmarreco/git-backup.git"
   },
   "keywords": [
     "bitbucket",
@@ -19,9 +19,9 @@
   "author": "Daniel Marreco",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dmarreco/bitbucket-backup/issues"
+    "url": "https://github.com/dmarreco/git-backup/issues"
   },
-  "homepage": "https://github.com/dmarreco/bitbucket-backup#readme",
+  "homepage": "https://github.com/dmarreco/git-backup#readme",
   "dependencies": {
     "bitbucket": "^1.17.1",
     "dotenv": "^8.2.0",

@@ -1,4 +1,4 @@
-import { listRepositoriesData } from '../lib/bitbucket';
+import { listRepositoriesData } from '../lib/providers/bitbucket';
 
 export default async function () {
     const reposData = await listRepositoriesData(process.env.BITBUCKET_API_BASE_URL, process.env.BITBUCKET_LOGIN, process.env.BITBUCKET_PASSWORD, process.env.BITBUCKET_USERNAME);
